@@ -17,6 +17,7 @@ public class LambdaTest extends LambdaBaseTest {
         open("http://www.google.com/");
         screenshot("google-home-page");
         assertThat(title(), containsString("Google"));
+
     }
 
     @Test
