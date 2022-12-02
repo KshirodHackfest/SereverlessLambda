@@ -12,14 +12,14 @@ import org.junit.experimental.categories.Category;
 @Category(Test.class)
 public class LambdaTest extends LambdaBaseTest {
 
-    @Test
+    //@Test
     public void googleTest() {
         open("http://www.google.com/");
         screenshot("google-home-page");
         assertThat(title(), containsString("Google"));
     }
 
-    @Test
+    //@Test
     public void blackboardTest() {
         open("http://www.blackboard.com/");
         screenshot("blackboard-home-page");
