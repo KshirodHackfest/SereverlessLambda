@@ -12,7 +12,7 @@ import org.openqa.selenium.TakesScreenshot;
 
 public abstract class LambdaBaseTest {
 
-    @BeforeClass
+    //@BeforeClass
     public static void baseTestBeforeClass() {
         Configuration.browser = "chrome";
         Configuration.reopenBrowserOnFail = false;

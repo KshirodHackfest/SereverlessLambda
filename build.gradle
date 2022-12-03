@@ -26,50 +26,23 @@ apply plugin: 'com.github.johnrengelman.shadow'
 
 group = 'com.blackboard.testing'
 
-//repositories {
-//    mavenCentral()
-//}
-
-//test {
-//    include '**/ExampleTestSuite.class'
-//}
 
 dependencies {
-//    compile group: 'com.codeborne', name: 'selenide', version: '4.8'
     implementation group: 'com.codeborne', name: 'selenide', version: '4.8'
-//    compile group: 'com.amazonaws', name: 'aws-lambda-java-events', version: '1.1.0'
     implementation group: 'com.amazonaws', name: 'aws-lambda-java-events', version: '3.11.0'
-//    compile group: 'com.amazonaws', name: 'aws-lambda-java-core', version: '1.1.0'
     implementation group: 'com.amazonaws', name: 'aws-lambda-java-core', version: '1.2.2'
-//    compile group: 'com.amazonaws', name: 'aws-java-sdk-lambda', version: '1.11.208'
     implementation group: 'com.amazonaws', name: 'aws-java-sdk-lambda', version: '1.12.350'
-//    compile group: 'com.amazonaws.serverless', name: 'aws-serverless-java-container-jersey', version: '0.7'
     implementation group: 'com.amazonaws.serverless', name: 'aws-serverless-java-container-jersey', version: '1.9'
+    implementation group: 'com.amazonaws', name: 'aws-java-sdk-bom', version: '1.11.1000'
     implementation group: 'org.reflections', name: 'reflections', version: '0.10.2'
+    implementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+    implementation group: 'io.rest-assured', name: 'rest-assured', version: '4.5.1'
+    implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
 
-
-//    testImplementation group: 'junit', name: 'junit', version: '4.13.2'
-//    implementation 'junit:junit:4.13.2'
-//    testImplementation 'org.jetbrains.spek:spek-junit-platform-engine:1.0.89'
-
-
-    //testImplementation ("org.junit.jupiter:junit-jupiter:5.9.0")
 
     testImplementation group: 'junit', name: 'junit', version: '4.12'
     implementation 'junit:junit:4.12'
-//    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.7.1'
-// https://mvnrepository.com/artifact/org.junit.vintage/junit-vintage-engine
     testImplementation group: 'org.junit.vintage', name: 'junit-vintage-engine', version: '5.9.1'
-
-//    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.9.1'
-//    implementation 'org.junit.jupiter:junit-jupiter-api:5.9.1'
-
-//    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.9.1'
-
-
-//    compile group: 'org.reflections', name: 'reflections', version: '0.9.10'
-//    compile group: 'junit', name: 'junit', version:'4.12'
-
 }
 
 sourceSets {
@@ -84,26 +57,14 @@ sourceSets {
         }
     }
 }
-//jar {
-//    manifest {
-//        attributes "Main-Class": "com.gradle.tutorial.FizzBuzzProcessor"
-//    }
-//
-//    from {
-//        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
-//    }
-//}
 
 tasks.withType(Test) {
     useJUnitPlatform()
 }
 
-//test {
-//    useJUnitPlatform()
-//}
 
 task unzipLibs(type: Copy) {
-    def libs = file('./bin/lib.zip')
+    def libs = file('../bin/lib.zip')
     def resources = file("${projectDir}/src/main/resources/")
 
     from zipTree(libs)
@@ -123,5 +84,5 @@ shadowJar {
 }
 
 task deploy(type: Exec) {
-    commandLine 'cmd', '/c', 'sls' , 'deploy'
+    commandLine 'cmd', '/c', 'sls', 'deploy'
 }
