@@ -63,7 +63,7 @@ tasks.withType(Test) {
 }
 
 task unzipLibs(type: Copy) {
-    def libs = file('../bin/lib.zip')
+    def libs = file('./bin/lib.zip')
     def resources = file("${projectDir}/src/main/resources/")
 
     from zipTree(libs)
