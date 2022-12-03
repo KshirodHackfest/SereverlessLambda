@@ -20,7 +20,7 @@ public class LambdaTest extends LambdaBaseTest {
         RequestSpecification httpRequest = RestAssured.given();
         Response response = httpRequest.request(Method.GET, "https://demoqa.com/BookStore/v1/Books");
         String responseBody = response.getStatusLine();
-        LOGGER.log("Status Line is " + responseBody);
+        LOGGER.log("Status line is " + responseBody);
     }
 
     @Test
